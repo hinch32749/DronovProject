@@ -1,17 +1,19 @@
-header hl {
-    font-size: 4 Opt;
+header h1 {
     text-transform: uppercase;
     text-align: center;
-    background: url("static/img/doska1.jpg") left / auto 100% no-repeat;
+    margin: 50px 30px;
+    background: url("doska1.jpg") left / auto 150% no-repeat;
 }
 nav {
     font-size: 16pt;
-    width: 15Opx;
+    width: 150px;
     float: left;
 }
 nav a {
     display: block;
-    margin: lOpx Opx;
+    margin: 10px 5px;
 }
 section {
-    margin-left: 170px;
+    margin-top: 50px;
+    margin-left: 250px;
+}
