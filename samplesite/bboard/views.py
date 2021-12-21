@@ -1,3 +1,4 @@
+from django.http import StreamingHttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
@@ -10,6 +11,13 @@ def index(request):
     rubrics = Rubric.objects.all()
     context = {'bbs': bbs, 'rubrics': rubrics}
     return render(request, 'bboard/index.html', context)
+
+
+# def index(request):
+#     bbs = Bb.objects.all()
+#     resp = StreamingHttpResponse(bbs,
+#                                  content_type='text/plain; charset=utf-8')
+#     return resp
 
 
 def by_rubric(request, rubric_id):
