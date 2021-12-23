@@ -1,4 +1,5 @@
 from django.http import StreamingHttpResponse
+from django.core.paginator import Paginator
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, TemplateView, DetailView, ListView, FormView, \
@@ -105,18 +106,32 @@ class BbByRubricView(ListView):
 # =====================================================================================
 # Класс выводящий Объявления по дате.
 
-class BbIndexView(ArchiveIndexView):
-    model =Bb
-    date_field = 'published'
-    date_list_period = 'year'
-    template_name = 'bboard/index.html'
-    context_object_name = 'bbs'
-    allow_empty = True
+# class BbIndexView(ArchiveIndexView):
+#     model =Bb
+#     date_field = 'published'
+#     date_list_period = 'year'
+#     template_name = 'bboard/index.html'
+#     context_object_name = 'bbs'
+#     allow_empty = True
+#
+#     def get_context_data(self, *args, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['rubrics'] = Rubric.objects.all()
+#         return context
+#
 
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['rubrics'] = Rubric.objects.all()
-        return context
+def index(request):
+    bbs = Bb.objects.all()
+    rubrics = Rubric.objects.all()
+    paginator = Paginator(bbs, 4)
+    if 'page' in request.GET:
+        page_num = request.GET['page']
+    else:
+        page_num = 1
+    page = paginator.get_page(page_num)
+    context = {'bbs': page.object_list, 'page': page, 'rubrics': rubrics}
+    print(request.GET)
+    return render(request, 'bboard/index.html', context)
 
 
 # ====================================================================================
@@ -189,9 +204,4 @@ class BbAddView(FormView):
 #         context['rubrics'] = Rubric.objects.all()
 #         return context
 # ====================================================================================
-#
-# def index(request):
-#     bbs = Bb.objects.all()
-#     rubrics = Rubric.objects.all()
-#     context = {'bbs': bbs, 'rubrics': rubrics}
-#     return render(request, 'bboard/index.html', context)
+
