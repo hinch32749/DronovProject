@@ -1,7 +1,8 @@
 from django.http import StreamingHttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
-from django.views.generic import CreateView, TemplateView, DetailView, ListView, FormView, UpdateView, DeleteView
+from django.views.generic import CreateView, TemplateView, DetailView, ListView, FormView, \
+    UpdateView, DeleteView, ArchiveIndexView, DateDetailView, RedirectView
 
 from .models import Bb, Rubric
 from .forms import BbForm
@@ -47,8 +48,26 @@ class BbDetailView(DetailView):
         return context
 
 
+# class BbDetailView(DateDetailView):
+#     """Выводит описание выбранного объявления."""
+#     model = Bb
+#     date_field = 'published'
+#     month_format = '%m'
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['rubrics'] = Rubric.objects.all()
+#         return context
+#
+#
+# class BbRedirectView(RedirectView):
+#     url = '/detail/%(pk)d/'
+
+
 # ==================================================================================
 # Классы для вывода Рубрики с ее объявлениями.
+# Листинг 10.12 Дронова представляет еще один вариант контроллеров смешанной функциональности.
+# Но советует его не использовать. Для примера смотри Листинг 10.12.
 
 class BbByRubricView(ListView):
     """Выводит выбранную рубрику и все ее объявления."""
@@ -84,6 +103,23 @@ class BbByRubricView(ListView):
 #     context = {'bbs': bbs, 'rubrics': rubrics, 'current_rubric': current_rubric}
 #     return render(request, 'bboard/by_rubric.html', context)
 # =====================================================================================
+# Класс выводящий Объявления по дате.
+
+class BbIndexView(ArchiveIndexView):
+    model =Bb
+    date_field = 'published'
+    date_list_period = 'year'
+    template_name = 'bboard/index.html'
+    context_object_name = 'bbs'
+    allow_empty = True
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['rubrics'] = Rubric.objects.all()
+        return context
+
+
+# ====================================================================================
 # Класс для удаления Объвлений.
 
 class BbDeleteView(DeleteView):
@@ -153,9 +189,9 @@ class BbAddView(FormView):
 #         context['rubrics'] = Rubric.objects.all()
 #         return context
 # ====================================================================================
-
-def index(request):
-    bbs = Bb.objects.all()
-    rubrics = Rubric.objects.all()
-    context = {'bbs': bbs, 'rubrics': rubrics}
-    return render(request, 'bboard/index.html', context)
+#
+# def index(request):
+#     bbs = Bb.objects.all()
+#     rubrics = Rubric.objects.all()
+#     context = {'bbs': bbs, 'rubrics': rubrics}
+#     return render(request, 'bboard/index.html', context)
