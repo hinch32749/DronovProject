@@ -11,6 +11,8 @@
   <p>{{ bb.content }}</p>
     <p><a href="{% url 'by_rubric' bb.rubric.pk %}">{{ bb.rubric.name }}</a></p>
   <p>{{ bb.published|date:"d.m.Y H:i:s" }}</p>
+  <p><a href="{% url 'correction' bb.pk %}">Исправить</a></p>
+  <p><a href="{% url 'delete' bb.pk %}">Удалить</a></p>
 </div>
 {% endfor %}
 {% endblock %}
