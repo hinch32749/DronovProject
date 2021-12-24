@@ -104,7 +104,7 @@ class BbByRubricView(ListView):
 #     context = {'bbs': bbs, 'rubrics': rubrics, 'current_rubric': current_rubric}
 #     return render(request, 'bboard/by_rubric.html', context)
 # =====================================================================================
-# Класс выводящий Объявления по дате.
+# Класс выводящий Объявления по дате и функция выводящяя главную страницу.
 
 # class BbIndexView(ArchiveIndexView):
 #     model =Bb
@@ -147,6 +147,7 @@ class BbDeleteView(DeleteView):
 
     def get_success_url(self):
         return reverse('by_rubric', kwargs={'rubric_id': self.object.rubric.id})
+
 
 # =====================================================================================
 # Класс для редактирования Объявлений.
@@ -203,5 +204,6 @@ class BbAddView(FormView):
 #         context = super().get_context_data(**kwargs)
 #         context['rubrics'] = Rubric.objects.all()
 #         return context
+
 # ====================================================================================
 
