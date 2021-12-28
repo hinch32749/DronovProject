@@ -1,12 +1,14 @@
+from django.forms import modelformset_factory
+from django.forms.formsets import ORDERING_FIELD_NAME
 from django.http import StreamingHttpResponse
 from django.core.paginator import Paginator
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, TemplateView, DetailView, ListView, FormView, \
     UpdateView, DeleteView, ArchiveIndexView, DateDetailView, RedirectView
 
 from .models import Bb, Rubric
-from .forms import BbForm
+from .forms import BbForm, RubricBaseFormSet
 
 
 # ========================================================================================================
@@ -206,4 +208,21 @@ class BbAddView(FormView):
 #         return context
 
 # ====================================================================================
-
+#
+def rubrics(request):
+    RubricFormSet = modelformset_factory(Rubric, fields=('name',), can_order=True, can_delete=True,
+                                         formset=RubricBaseFormSet)
+    rubric = Rubric.objects.all()
+    if request.method == 'POST':
+        formset = RubricFormSet(request.POST)
+        if formset.is_valid():
+            for form in formset:
+                if form.cleaned_data:
+                    rubric = form.save(commit=False)
+                    rubric.order = form.cleaned_data[ORDERING_FIELD_NAME]
+                    rubric.save()
+            return redirect('index')
+    else:
+        formset = RubricFormSet()
+    context = {'formset': formset, 'rubrics': rubric}
+    return render(request, 'bboard/rubrics.html', context)
