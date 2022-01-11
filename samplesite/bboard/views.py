@@ -132,7 +132,7 @@ def index(request):
         page_num = 1
     page = paginator.get_page(page_num)
     context = {'bbs': page.object_list, 'page': page, 'rubrics': rubrics}
-    print(request.GET)
+    # print(request.GET)
     return render(request, 'bboard/index.html', context)
 
 

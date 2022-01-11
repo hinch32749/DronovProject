@@ -25,24 +25,27 @@
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
     <loaded-nodes>
-      <connection connection-id="f8ec77a5-0cc2-4cf5-a33f-82907b072999">
-        <schema name="main" object-types="table, view" />
+      <connection connection-id="a67fa825-5630-4fb5-9616-89fe7b2ba01c">
+        <schema name="pg_catalog" object-types="function" />
+        <schema name="public" object-types="table, view, sequence, function, constraint, index, column, dataset trigger" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="f8ec77a5-0cc2-4cf5-a33f-82907b072999">
-      <console name="Connection" type="STANDARD" schema="main" session="Main" />
+    <connection id="a67fa825-5630-4fb5-9616-89fe7b2ba01c">
+      <console name="Connection" type="STANDARD" schema="information_schema" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="f8ec77a5-0cc2-4cf5-a33f-82907b072999" />
+    <connection id="a67fa825-5630-4fb5-9616-89fe7b2ba01c" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="f8ec77a5-0cc2-4cf5-a33f-82907b072999" dataset="main.bboard_bb" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="a67fa825-5630-4fb5-9616-89fe7b2ba01c" dataset="public.django_content_type" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="a67fa825-5630-4fb5-9616-89fe7b2ba01c" dataset="public.bboard_bb" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="a67fa825-5630-4fb5-9616-89fe7b2ba01c" dataset="public.testapp_kit" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -70,26 +73,23 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="f8ec77a5-0cc2-4cf5-a33f-82907b072999" active="true">
+      <connection id="a67fa825-5630-4fb5-9616-89fe7b2ba01c" active="true">
         <database>
           <name value="Connection" />
           <description value="" />
-          <database-type value="SQLITE" />
+          <database-type value="POSTGRES" />
           <config-type value="BASIC" />
-          <database-version value="3.3" />
+          <database-version value="14.0" />
           <driver-source value="BUILTIN" />
           <driver-library value="" />
           <driver value="" />
-          <url-type value="FILE" />
-          <host value="" />
-          <port value="" />
-          <database value="" />
-          <files>
-            <file path="D:\Python\PycharmProjects\DronovProject\samplesite\db.sqlite3" schema="main" />
-          </files>
-          <type value="NONE" />
-          <user value="" />
-          <deprecated-pwd value="" />
+          <url-type value="DATABASE" />
+          <host value="localhost" />
+          <port value="5432" />
+          <database value="dronov_db" />
+          <type value="USER_PASSWORD" />
+          <user value="alexey" />
+          <deprecated-pwd value="YWxleGV5MTIzNA==" />
         </database>
         <properties>
           <auto-commit value="false" />
