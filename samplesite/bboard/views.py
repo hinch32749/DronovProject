@@ -8,7 +8,7 @@ from django.views.generic import CreateView, TemplateView, DetailView, ListView,
     UpdateView, DeleteView, ArchiveIndexView, DateDetailView, RedirectView
 
 from .models import Bb, Rubric
-from .forms import BbForm, RubricBaseFormSet
+from .forms import BbForm, RubricBaseFormSet, SearchForm
 
 
 # ========================================================================================================
@@ -168,7 +168,6 @@ class BbEditView(UpdateView):
         return reverse('detail',
                        kwargs={'pk': self.object.id})
 
-
 # =====================================================================================
 # Классы для работы с формами и добавлением новый объявлений.
 
@@ -226,3 +225,20 @@ def rubrics(request):
         formset = RubricFormSet()
     context = {'formset': formset, 'rubrics': rubric}
     return render(request, 'bboard/rubrics.html', context)
+
+
+# Контроллер, который использует форму не связанную с моделями, для поиска рубрики.
+def search(request):
+    if request.method == 'POST':
+        sf = SearchForm(request.POST)
+        if sf.is_valid():
+            keyword = sf.cleaned_data['keyword'].title()
+            rubric_id = sf.cleaned_data['rubric'].pk
+            bbs = Bb.objects.filter(title=keyword, rubric=rubric_id)
+            context = {'bbs': bbs}
+            return render(request, 'bboard/search_result.html', context)
+    else:
+        sf = SearchForm()
+    context = {'form': sf}
+    return render(request, 'bboard/search.html', context)
+

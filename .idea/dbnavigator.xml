@@ -25,14 +25,14 @@
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
     <loaded-nodes>
-      <connection connection-id="a67fa825-5630-4fb5-9616-89fe7b2ba01c">
+      <connection connection-id="f5bf5e31-ba2a-478b-92d8-f34d20dfe600">
         <schema name="pg_catalog" object-types="function" />
         <schema name="public" object-types="table, view, sequence, function, constraint, index, column, dataset trigger" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="a67fa825-5630-4fb5-9616-89fe7b2ba01c">
+    <connection id="f5bf5e31-ba2a-478b-92d8-f34d20dfe600">
       <console name="Connection" type="STANDARD" schema="information_schema" session="Main" />
     </connection>
   </component>
@@ -40,12 +40,11 @@
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="a67fa825-5630-4fb5-9616-89fe7b2ba01c" />
+    <connection id="f5bf5e31-ba2a-478b-92d8-f34d20dfe600" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="a67fa825-5630-4fb5-9616-89fe7b2ba01c" dataset="public.django_content_type" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="a67fa825-5630-4fb5-9616-89fe7b2ba01c" dataset="public.bboard_bb" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="a67fa825-5630-4fb5-9616-89fe7b2ba01c" dataset="public.testapp_kit" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="f5bf5e31-ba2a-478b-92d8-f34d20dfe600" dataset="public.testapp_message" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="f5bf5e31-ba2a-478b-92d8-f34d20dfe600" dataset="public.testapp_privatemessage" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -73,7 +72,7 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="a67fa825-5630-4fb5-9616-89fe7b2ba01c" active="true">
+      <connection id="f5bf5e31-ba2a-478b-92d8-f34d20dfe600" active="true">
         <database>
           <name value="Connection" />
           <description value="" />

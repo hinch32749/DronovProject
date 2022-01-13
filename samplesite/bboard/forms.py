@@ -59,3 +59,7 @@ class RubricBaseFormSet(BaseModelFormSet):
             raise ValidationError('Добавьте рубрики недвижимости, транспорта и мебели')
 
 
+# Форма не связанная с моделью для поиска Рубрик.
+class SearchForm(forms.Form):
+    keyword = forms.CharField(max_length=20, label='Искомое слово')
+    rubric = forms.ModelChoiceField(queryset=Rubric.objects.all(), label='Рубрика')

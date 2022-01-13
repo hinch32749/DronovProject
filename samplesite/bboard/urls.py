@@ -4,11 +4,12 @@ from django.contrib.auth.views import LogoutView, LoginView, PasswordChangeView,
 from django.urls import path, re_path
 
 from .views import BbByRubricView, BbAddView, BbDetailView, BbEditView, \
-    BbDeleteView, index, rubrics
+    BbDeleteView, index, rubrics, search
 
 # app_name = 'bboard'
 
 urlpatterns = [
+    re_path(r'^search/$', search, name='search'),
     re_path(r'^rubrics/$', rubrics, name='rubrics'),
     re_path('^detail/(?P<pk>[0-9]*)/$', BbDetailView.as_view(), name='detail'),
     # path('detail/<int:year>/<int:month>/<int:day>/<int:pk>',
