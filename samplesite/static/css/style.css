@@ -2,7 +2,7 @@ header h1 {
     text-transform: uppercase;
     text-align: center;
     margin: 50px 30px;
-    background: url("doska1.jpg") left / auto 150% no-repeat;
+    background: url("css/doska1.jpg") left / auto 150% no-repeat;
 }
 nav {
     font-size: 16pt;

@@ -3,8 +3,8 @@ from django.conf.urls.static import static
 from django.contrib.auth.views import LogoutView, LoginView, PasswordChangeView, PasswordChangeDoneView
 from django.urls import path, re_path
 
-from .views import BbByRubricView, BbAddView, BbDetailView, BbEditView, \
-    BbDeleteView, index, rubrics, search
+from .views import BbByRubricView, BbDetailView, BbEditView, \
+    BbDeleteView, index, rubrics, search, BbAddView
 
 # app_name = 'bboard'
 

@@ -43,8 +43,12 @@
     <connection id="f5bf5e31-ba2a-478b-92d8-f34d20dfe600" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="f5bf5e31-ba2a-478b-92d8-f34d20dfe600" dataset="public.precise_bbcode_bbcodetag" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="f5bf5e31-ba2a-478b-92d8-f34d20dfe600" dataset="public.testapp_message" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="f5bf5e31-ba2a-478b-92d8-f34d20dfe600" dataset="public.precise_bbcode_smileytag" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="f5bf5e31-ba2a-478b-92d8-f34d20dfe600" dataset="public.testapp_privatemessage" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="f5bf5e31-ba2a-478b-92d8-f34d20dfe600" dataset="public.testapp_note" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="f5bf5e31-ba2a-478b-92d8-f34d20dfe600" dataset="public.django_migrations" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />

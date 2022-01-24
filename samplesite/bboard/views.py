@@ -10,6 +10,7 @@ from django.views.generic import CreateView, TemplateView, DetailView, ListView,
 from .models import Bb, Rubric
 from .forms import BbForm, RubricBaseFormSet, SearchForm
 
+from django.db.models.signals import post_save
 
 # ========================================================================================================
 # Всякие примеры из книги
@@ -40,6 +41,7 @@ from .forms import BbForm, RubricBaseFormSet, SearchForm
 
 # ======================================================================================
 #  Класс для детального вывода Объявления.
+
 
 class BbDetailView(DetailView):
     """Выводит описание выбранного объявления."""
@@ -229,16 +231,30 @@ def rubrics(request):
 
 # Контроллер, который использует форму не связанную с моделями, для поиска рубрики.
 def search(request):
+    rubrics = Rubric.objects.all()
     if request.method == 'POST':
         sf = SearchForm(request.POST)
-        if sf.is_valid():
-            keyword = sf.cleaned_data['keyword'].title()
-            rubric_id = sf.cleaned_data['rubric'].pk
-            bbs = Bb.objects.filter(title=keyword, rubric=rubric_id)
-            context = {'bbs': bbs}
-            return render(request, 'bboard/search_result.html', context)
+        try:
+            if sf.is_valid():
+                print('here', sf.errors)
+                keyword = sf.cleaned_data['keyword'].title()
+                rubric_id = sf.cleaned_data['rubric'].pk
+                bbs = Bb.objects.filter(title__icontains=keyword, rubric=rubric_id)
+                if bbs:
+                    context = {'bbs': bbs, 'rubrics': rubrics}
+                    return render(request, 'bboard/search_result.html', context)
+                else:
+                    sf = SearchForm()
+                    context = {'form': sf, 'rubrics': rubrics}
+                    return render(request, 'bboard/search.html', context)
+        except Exception as ex:
+            print()
+            print(ex)
+            sf = SearchForm()
+            context = {'form': sf, 'rubrics': rubrics}
+            return render(request, 'bboard/search.html', context)
     else:
         sf = SearchForm()
-    context = {'form': sf}
+    context = {'form': sf, 'rubrics': rubrics}
     return render(request, 'bboard/search.html', context)
 

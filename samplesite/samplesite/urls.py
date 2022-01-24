@@ -20,4 +20,5 @@ urlpatterns = [
     path('bboard/', include('bboard.urls')),
     path('testapp/', include('testapp.urls')),
     path('admin/', admin.site.urls),
+    path('captcha/', include('captcha.urls')),
 ]

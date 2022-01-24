@@ -1,14 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "layout/basic.html" %}
+{% load static %}
+
+{% block title %}Поиск объявления :: Доска объявлений{% endblock %}
+
+{% block header %}<h1>Поиск объявления</h1>{% endblock %}
+
+{% block content %}
 <form action="" method="POST">
+    {% if error %}
+    {{ error }}
+    {% endif %}
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="OK">
 </form>
-</body>
-</html>
+{% endblock %}

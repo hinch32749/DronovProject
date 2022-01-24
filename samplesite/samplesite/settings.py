@@ -41,7 +41,18 @@ INSTALLED_APPS = [
     'bboard',
     'testapp',
 
+    'captcha',
+    'precise_bbcode',
+    'bootstrap4',
+
 ]
+
+# Настройка библиотеки бутстрапа
+BOOTSTRAP4 = {
+    'required_css_class': 'required',
+    'success_css_class': 'has-success',
+    'error_css_class': 'has-error',
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

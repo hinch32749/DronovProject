@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-HEHE
-</body>
-</html>
+{% extends "layout/basic.html" %}
+{% load static %}
+
+{% block title %}Результат объявления :: Доска объявлений{% endblock %}
+
+{% block header %}<h1>Результат объявления</h1>{% endblock %}
+
+{% block content %}
+{% for bb in bbs %}
+<a href="{% url 'detail' bb.id %}"><p>{{ bb.title }}</p></a>
+<p>Цена: {{ bb.price }}</p>
+{% endfor %}
+{% endblock %}

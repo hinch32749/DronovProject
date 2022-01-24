@@ -52,36 +52,36 @@ class Note(models.Model):
         verbose_name = 'Заметки'
 
 
-# Гл. 16.4.1 Пример прямого наследования моделей.
-class Message(models.Model):
-    content = models.TextField()
-
-
-class PrivateMessage(Message):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    message = models.OneToOneField('Message', on_delete=models.CASCADE, parent_link=True)
-
-
-# Гл. 16.4.1 Пример Абстрактных моделей
-class Message(models.Model):
-    content = models.TextField()
-    name = models.CharField(max_length=20)
-    email = models.EmailField()
-
-    class Meta:
-        abstract = True
-        ordering = ['name']
-
-
-class PrivateMessage(Message):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    message = models.OneToOneField('Message', on_delete=models.CASCADE, parent_link=True)
-    # Переопределяем поле name.
-    name = models.CharField(max_length=40)
-    # Удаляем поле email.
-    email = None
-
-    # Наследование поля name из класса Meta модели Message.
-    class Meta(Message.Meta):
-        pass
+# # Гл. 16.4.1 Пример прямого наследования моделей.
+# class Message(models.Model):
+#     content = models.TextField(default='')
+#
+#
+# class PrivateMessage(Message):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     message = models.OneToOneField('Message', on_delete=models.CASCADE, parent_link=True)
+#
+#
+# # Гл. 16.4.1 Пример Абстрактных моделей
+# class Message(models.Model):
+#     content = models.TextField(default='')
+#     name = models.CharField(max_length=20)
+#     email = models.EmailField()
+#
+#     class Meta:
+#         abstract = True
+#         ordering = ['name']
+#
+#
+# class PrivateMessage(Message):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     message = models.OneToOneField('Message', on_delete=models.CASCADE, parent_link=True)
+#     # Переопределяем поле name.
+#     name = models.CharField(max_length=40)
+#     # Удаляем поле email.
+#     email = None
+#
+#     # Наследование поля name из класса Meta модели Message.
+#     class Meta(Message.Meta):
+#         pass
 
