@@ -1,5 +1,6 @@
 {% extends "layout/basic.html" %}
 {% load static %}
+{% load bootstrap4 %}
 
 {% block title %} Вход {% endblock %}
 
@@ -10,9 +11,10 @@
 {% else %}
 <form action="" method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="hidden" name="next" value="{{ next }}">
-    <input type="submit" value="Войти">
+    {% bootstrap_form form size='small' %}
+    {% buttons submit='Войти' button_class='btn-primary' %}{% endbuttons %}
+<!--    <input type="hidden" name="next" value="{{ next }}">-->
+<!--    <input type="submit" value="Войти">-->
 </form>
 {% endif %}
 {% endblock %}

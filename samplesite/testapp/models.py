@@ -1,7 +1,10 @@
 from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
+from datetime import datetime
+from os.path import splitext
 from django.contrib.auth.models import User
+
 
 class Spare(models.Model):
     name = models.CharField(max_length=40, verbose_name='Деталь')
@@ -50,6 +53,29 @@ class Note(models.Model):
     class Meta:
         verbose_name_plural = 'Заметки'
         verbose_name = 'Заметки'
+
+
+# Листинг 20.1 Модель с полем для хранения с выгруженным файлом
+def get_timestamp_path(instance, filename):
+    return '%s%s' % (datetime.now().timestamp(), splitext(filename)[1])
+
+
+class Img(models.Model):
+    img = models.ImageField(verbose_name='Изображение',
+                            upload_to='') # Если указать тут путь, как то конфликтует с MEDIA_ROOT,
+    # и не выводит url.
+    desc = models.TextField(verbose_name='Описание')
+
+    class Meta:
+        verbose_name = 'Изображение'
+        verbose_name_plural = 'Изображения'
+
+    # @property
+    # def img_url(self):
+    #     if self.img and hasattr(self.img, 'url'):
+    #         return self.img.url
+
+
 
 
 # # Гл. 16.4.1 Пример прямого наследования моделей.

@@ -17,7 +17,7 @@
       <scope value="GLOBAL" />
       <destination value="FILE" />
       <format value="EXCEL" />
-      <charset value="windows-1251" />
+      <charset value="UTF-8" />
     </export-instructions>
   </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
@@ -25,14 +25,13 @@
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
     <loaded-nodes>
-      <connection connection-id="f5bf5e31-ba2a-478b-92d8-f34d20dfe600">
-        <schema name="pg_catalog" object-types="function" />
+      <connection connection-id="cf1a7d7f-3649-4dc9-9017-3f6737c064b8">
         <schema name="public" object-types="table, view, sequence, function, constraint, index, column, dataset trigger" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="f5bf5e31-ba2a-478b-92d8-f34d20dfe600">
+    <connection id="cf1a7d7f-3649-4dc9-9017-3f6737c064b8">
       <console name="Connection" type="STANDARD" schema="information_schema" session="Main" />
     </connection>
   </component>
@@ -40,15 +39,10 @@
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="f5bf5e31-ba2a-478b-92d8-f34d20dfe600" />
+    <connection id="cf1a7d7f-3649-4dc9-9017-3f6737c064b8" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="f5bf5e31-ba2a-478b-92d8-f34d20dfe600" dataset="public.precise_bbcode_bbcodetag" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="f5bf5e31-ba2a-478b-92d8-f34d20dfe600" dataset="public.testapp_message" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="f5bf5e31-ba2a-478b-92d8-f34d20dfe600" dataset="public.precise_bbcode_smileytag" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="f5bf5e31-ba2a-478b-92d8-f34d20dfe600" dataset="public.testapp_privatemessage" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="f5bf5e31-ba2a-478b-92d8-f34d20dfe600" dataset="public.testapp_note" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="f5bf5e31-ba2a-478b-92d8-f34d20dfe600" dataset="public.django_migrations" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="cf1a7d7f-3649-4dc9-9017-3f6737c064b8" dataset="public.testapp_img" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -71,18 +65,21 @@
     <last-used-operator value="EQUAL" />
     <filters />
   </component>
+  <component name="DBNavigator.Project.ParserDiagnosticsManager">
+    <diagnostics-history />
+  </component>
   <component name="DBNavigator.Project.ScriptExecutionManager" clear-outputs="true">
     <recently-used-interfaces />
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="f5bf5e31-ba2a-478b-92d8-f34d20dfe600" active="true">
+      <connection id="cf1a7d7f-3649-4dc9-9017-3f6737c064b8" active="true">
         <database>
           <name value="Connection" />
           <description value="" />
           <database-type value="POSTGRES" />
           <config-type value="BASIC" />
-          <database-version value="14.0" />
+          <database-version value="12.9" />
           <driver-source value="BUILTIN" />
           <driver-library value="" />
           <driver value="" />
@@ -92,7 +89,7 @@
           <database value="dronov_db" />
           <type value="USER_PASSWORD" />
           <user value="alexey" />
-          <deprecated-pwd value="YWxleGV5MTIzNA==" />
+          <deprecated-pwd value="YTM3NTMzMzgyNDY3NQ==" />
         </database>
         <properties>
           <auto-commit value="false" />
