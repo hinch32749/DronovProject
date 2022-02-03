@@ -45,8 +45,47 @@ INSTALLED_APPS = [
     'precise_bbcode',
     'bootstrap4',
     'django_cleanup',
+    'easy_thumbnails',
 
 ]
+# Пример указания парсетов для библиотеки easy_thumbnails.
+THUMBNAIL_ALIASES ={
+    'bboard.Bb.picture': {
+        'default': {
+            'size': (500, 300),
+            'crop': 'scale',
+        },
+    },
+    'testapp': {
+        'default': {
+            # Размеры миниатюры
+            'size': (400, 300),
+            # Управление обрезкой или маштабированием до размеров size.
+            'crop': 'smart',
+        },
+        'big': {
+            'size': (650, 0),
+            'crop': 'smart'
+        },
+        'bw': {
+            'size': (600, 500),
+            'crop': 'scale',
+            'bw': True
+        },
+    },
+    '': {
+        'default': {
+            'size': (180, 240),
+            'crop': 'scale',
+        },
+        'big': {
+            'size': (480, 640),
+            'crop': '10,10',
+        },
+    },
+}
+
+THUMBNAIL_MEDIA_URL = ''
 
 # Настройка библиотеки бутстрапа
 BOOTSTRAP4 = {

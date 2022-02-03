@@ -26,6 +26,7 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="cf1a7d7f-3649-4dc9-9017-3f6737c064b8">
+        <schema name="pg_catalog" object-types="function" />
         <schema name="public" object-types="table, view, sequence, function, constraint, index, column, dataset trigger" />
       </connection>
     </loaded-nodes>
@@ -36,13 +37,22 @@
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="cf1a7d7f-3649-4dc9-9017-3f6737c064b8" object-ref="schemas/public/tables/easy_thumbnails_thumbnaildimensions" />
+      <object connection-id="cf1a7d7f-3649-4dc9-9017-3f6737c064b8" object-ref="schemas/public/tables/easy_thumbnails_source" />
+      <object connection-id="cf1a7d7f-3649-4dc9-9017-3f6737c064b8" object-ref="schemas/public/tables/easy_thumbnails_thumbnail" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="cf1a7d7f-3649-4dc9-9017-3f6737c064b8" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="cf1a7d7f-3649-4dc9-9017-3f6737c064b8" dataset="public.precise_bbcode_bbcodetag" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="cf1a7d7f-3649-4dc9-9017-3f6737c064b8" dataset="public.testapp_img" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="cf1a7d7f-3649-4dc9-9017-3f6737c064b8" dataset="public.easy_thumbnails_source" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="cf1a7d7f-3649-4dc9-9017-3f6737c064b8" dataset="public.easy_thumbnails_thumbnail" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="cf1a7d7f-3649-4dc9-9017-3f6737c064b8" dataset="public.precise_bbcode_smileytag" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="cf1a7d7f-3649-4dc9-9017-3f6737c064b8" dataset="public.easy_thumbnails_thumbnaildimensions" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
