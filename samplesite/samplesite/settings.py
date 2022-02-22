@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'bboard',
     'testapp',
 
+    'social_django',
     'captcha',
     'precise_bbcode',
     'bootstrap4',
@@ -60,12 +61,12 @@ THUMBNAIL_ALIASES ={
         'default': {
             # Размеры миниатюры
             'size': (400, 300),
-            # Управление обрезкой или маштабированием до размеров size.
+            # Управление обрезкой или масштабированием до размеров size.
             'crop': 'smart',
         },
         'big': {
             'size': (650, 0),
-            'crop': 'smart'
+            'crop': 'scale'
         },
         'bw': {
             'size': (600, 500),
@@ -86,6 +87,12 @@ THUMBNAIL_ALIASES ={
 }
 
 THUMBNAIL_MEDIA_URL = ''
+
+# Разрешает хранить данные поля типа JSONField в postgres
+SOCIAL_AUTH_POSTGRES_JSONFIELD = True
+# ID приложения и защищённый ключ
+SOCIAL_AUTH_VK_OAUTH2_KEY = '8082522'
+SOCIAL_AUTH_VK_OAUTH2_SECRET = 'mHQSbHRzhHsRfT5kAQFC'
 
 # Настройка библиотеки бутстрапа
 BOOTSTRAP4 = {
@@ -117,6 +124,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -158,6 +167,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.vk.VKOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
@@ -186,3 +199,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = '/bboard/index/'

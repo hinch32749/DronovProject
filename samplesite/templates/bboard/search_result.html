@@ -7,7 +7,7 @@
 
 {% block content %}
 {% for bb in bbs %}
-<a href="{% url 'detail' bb.id %}"><p>{{ bb.title }}</p></a>
+<a href="{% url 'bboard:detail' bb.id %}"><p>{{ bb.title }}</p></a>
 <p>Цена: {{ bb.price }}</p>
 {% endfor %}
 {% endblock %}

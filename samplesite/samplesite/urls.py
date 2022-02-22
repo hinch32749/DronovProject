@@ -19,10 +19,11 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('bboard/', include('bboard.urls')),
-    path('testapp/', include('testapp.urls')),
+    path('bboard/', include(('bboard.urls', 'bboard'), namespace='bboard')),
+    path('testapp/', include(('testapp.urls', 'testapp'), namespace='testapp')),
     path('admin/', admin.site.urls),
     path('captcha/', include('captcha.urls')),
+    path('social/', include('social_django.urls', namespace='social')),
 ]
 
 if settings.DEBUG:

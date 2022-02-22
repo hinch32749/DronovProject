@@ -1,3 +1,4 @@
+import os
 from django.shortcuts import render, redirect
 
 from .models import Img
@@ -34,7 +35,6 @@ def add_several_img(request):
                 img = Img()
                 img.desc = form.cleaned_data['desc']
                 img.img = file
-                print(img.img)
                 img.save()
             return redirect('index_test')
     else:
@@ -45,7 +45,6 @@ def add_several_img(request):
 
 def get_img(request, pk):
     img = Img.objects.get(pk=pk)
-    print(dir(img))
     context = {'img': img}
     return render(request, 'testapp/get_img.html', context)
 

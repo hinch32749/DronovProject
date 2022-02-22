@@ -248,10 +248,8 @@ def search(request):
                     context = {'form': sf, 'rubrics': rubrics}
                     return render(request, 'bboard/search.html', context)
         except Exception as ex:
-            print()
-            print(ex)
             sf = SearchForm()
-            context = {'form': sf, 'rubrics': rubrics}
+            context = {'form': sf, 'rubrics': rubrics, 'ex': ex}
             return render(request, 'bboard/search.html', context)
     else:
         sf = SearchForm()

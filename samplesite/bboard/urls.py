@@ -6,7 +6,7 @@ from django.urls import path, re_path
 from .views import BbByRubricView, BbDetailView, BbEditView, \
     BbDeleteView, index, rubrics, search, BbAddView
 
-# app_name = 'bboard'
+namespace = 'bboard'
 
 urlpatterns = [
     re_path(r'^search/$', search, name='search'),

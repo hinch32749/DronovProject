@@ -4,6 +4,8 @@ from django.urls import path
 
 from .views import index_test, add_img, get_img, delete_img, add_several_img
 
+namespace = 'testapp'
+
 urlpatterns = [
     path('index/', index_test, name='index_test'),
     path('add_img/', add_img, name='add_img'),

@@ -5,10 +5,10 @@
 {% block title %}{{ bb.title }}{% endblock %}
 
 {% block content %}
-<h3>Рубрика: <a href="{% url 'by_rubric' bb.rubric.id %}">{{ bb.rubric.name }}</a></h3>
+<h3>Рубрика: <a href="{% url 'bboard:by_rubric' bb.rubric.id %}">{{ bb.rubric.name }}</a></h3>
 <h2>{{ bb.title }}</h2>
 <p>{{ bb.content }}</p>
 <p>Цена: {{ bb.price|cur:'p.' }}</p>
-<p><a href="{% url 'correction' bb.pk %}">Исправить</a></p>
-<p><a href="{% url 'delete' bb.pk %}">Удалить</a></p>
+<p><a href="{% url 'bboard:correction' bb.pk %}">Исправить</a></p>
+<p><a href="{% url 'bboard:delete' bb.pk %}">Удалить</a></p>
 {% endblock%}

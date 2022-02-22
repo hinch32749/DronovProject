@@ -7,11 +7,15 @@
 
 {% block content %}
 <form action="" method="POST">
-    {% if error %}
-    {{ error }}
-    {% endif %}
     {% csrf_token %}
-    {{ form.as_p }}
+    {% for field in form %}
+    {% if field.errors %}
+        {% for error in errors %}
+            {{ error }}
+        {% endfor %}
+    {% endif %}
+    <p>{{ field.label_tag }}<br>{{ field }}</p>
+    {% endfor %}
     <input type="submit" value="OK">
 </form>
 {% endblock %}
