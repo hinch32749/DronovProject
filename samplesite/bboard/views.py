@@ -1,6 +1,6 @@
 from django.forms import modelformset_factory
 from django.forms.formsets import ORDERING_FIELD_NAME
-from django.http import StreamingHttpResponse
+from django.http import StreamingHttpResponse, HttpRequest
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
@@ -126,14 +126,23 @@ class BbByRubricView(ListView):
 
 def index(request):
     bbs = Bb.objects.all()
-    rubrics = Rubric.objects.all()
+    # rubrics = Rubric.objects.all()
+    print(request.COOKIES)
+    print(request.get_signed_cookie(key='sessionid', salt='SECRET_KEY'))
+    if 'counter' in request.COOKIES:
+        request.COOKIES['counter'] += 1
+        print(True)
+    else:
+        print(False)
+        request.COOKIES['counter'] = 1
+
     paginator = Paginator(bbs, 4)
     if 'page' in request.GET:
         page_num = request.GET['page']
     else:
         page_num = 1
     page = paginator.get_page(page_num)
-    context = {'bbs': page.object_list, 'page': page, 'rubrics': rubrics}
+    context = {'bbs': page.object_list, 'page': page}
     # print(request.GET)
     return render(request, 'bboard/index.html', context)
 
@@ -143,6 +152,7 @@ def index(request):
 
 class BbDeleteView(DeleteView):
     model = Bb
+    template_name = 'bboard/bb_confirm_delete.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -150,7 +160,7 @@ class BbDeleteView(DeleteView):
         return context
 
     def get_success_url(self):
-        return reverse('by_rubric', kwargs={'rubric_id': self.object.rubric.id})
+        return reverse('bboard:by_rubric', kwargs={'rubric_id': self.object.rubric.id})
 
 
 # =====================================================================================
@@ -167,11 +177,12 @@ class BbEditView(UpdateView):
         return context
 
     def get_success_url(self):
-        return reverse('detail',
+        return reverse('bboard:detail',
                        kwargs={'pk': self.object.id})
 
 # =====================================================================================
 # Классы для работы с формами и добавлением новый объявлений.
+
 
 class BbAddView(FormView):
     """Класс добавления нового Объявления."""
@@ -193,7 +204,7 @@ class BbAddView(FormView):
         return self.object
 
     def get_success_url(self):
-        return reverse('by_rubric',
+        return reverse('bboard:by_rubric',
                        kwargs={'rubric_id': self.object.cleaned_data['rubric'].pk})
 
 
@@ -222,7 +233,7 @@ def rubrics(request):
                     rubric = form.save(commit=False)
                     rubric.order = form.cleaned_data[ORDERING_FIELD_NAME]
                     rubric.save()
-            return redirect('index')
+            return redirect('bboard:index')
     else:
         formset = RubricFormSet()
     context = {'formset': formset, 'rubrics': rubric}
